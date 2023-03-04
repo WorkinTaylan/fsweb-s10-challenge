@@ -1,12 +1,19 @@
 import React from "react";
+import { useEffect } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { tr } from "date-fns/locale";
+import { notLS, notSil } from "../actions";
+import { useDispatch } from "react-redux";
+
 
 export default function Post({ item }) {
 
+  const dispatch=useDispatch();
+ 
+
   function handleSil() {
-    // burada ilgili eylemi dispatch edin
-    // sonra toast mesajı gösterin
+    dispatch(notSil(item.id))// burada ilgili eylemi dispatch edin
+    // sonra toast mesajı gösterin---reducer içinde gösterdim
   }
 
   return (

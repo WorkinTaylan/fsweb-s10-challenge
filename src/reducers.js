@@ -1,3 +1,6 @@
+import { NOT_EKLE, NOT_SIL, GET_NOT_LS} from "./actions";
+import { toast } from "react-toastify";
+
 const s10chLocalStorageKey = "s10ch";
 
 const baslangicDegerleri = {
@@ -10,7 +13,43 @@ const baslangicDegerleri = {
   ],
 };
 
-function localStorageStateYaz(key, data) {
+const train =(state=baslangicDegerleri, action)=>{
+  switch(action.type){
+    case NOT_EKLE:
+      let yeniState=
+        {
+      notlar:[...state.notlar, action.payload]
+        }
+      
+      localStorageStateYaz(s10chLocalStorageKey, yeniState)
+      toast.success('Harika! Not eklendi.')
+    return yeniState;
+
+    case NOT_SIL:
+      const removed=state.notlar.filter((item)=>item.id!==action.payload)
+      localStorageStateYaz(s10chLocalStorageKey, removed)
+      toast.warn('Removed it')
+      return {
+        ...state,
+        notlar:removed
+      }
+
+      case GET_NOT_LS:
+      const updatedNotes = baslangicNotlariniGetir(s10chLocalStorageKey);
+      return {
+        ...state,
+        notlar: updatedNotes,
+      };
+      
+      default:
+      return state
+   
+  }
+}
+
+
+
+export function localStorageStateYaz(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
@@ -27,3 +66,5 @@ function baslangicNotlariniGetir(key) {
     return baslangicDegerleri
   }
 }
+
+export default train;

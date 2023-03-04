@@ -1,10 +1,17 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 import { useHistory } from "react-router";
 import Gratitude from "./../assets/grForm.png";
+import { useDispatch, useSelector } from "react-redux";
+import { notEkle, notEkleAPI } from "../actions";
+
 
 export default function PostForm() {
+
+  const dispatch=useDispatch();
+
+ 
+
   const {
     register,
     handleSubmit,
@@ -22,6 +29,7 @@ export default function PostForm() {
         .join("|"),
     };
 
+    dispatch(notEkle(yeniNot))
     // burada ilgili eylemi dispatch edin
     // toast mesajı gösterin
     // sonra aşağıdaki satırı aktifleştirin
