@@ -14,9 +14,9 @@ export function notSil(notId) {
 }
 
 //const updatedNotes=baslangicNotlariniGetir(s10chLocalStorageKey)
-export const getNotsFromLocalStorage = () => {
+/*export const getNotsFromLocalStorage = () => {
   return { type: GET_NOTS_FROM_LS }
-}
+}*/
 
 export const notEkleAPI = (yeniNot) => dispatch => {
   axios

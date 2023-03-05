@@ -1,0 +1,1 @@
+Eğer sayfa açılınca, localStorage doluysa 'Tüm Notlar' sekmesi açılıyor ve bütün işlevler aktif halde. Fakat localStorage boşaltıldıktan sonra eğer sayfayı yenilersen 'TÜM NOTLAR' sekmesi patlıyor, çünkü hala localStorage içinden veri almaya çalışıyor fakat boş array döndüğü için patlıyor.

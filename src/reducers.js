@@ -45,24 +45,18 @@ const train =(state=baslangicDegerleriBelirle(s10chLocalStorageKey,baslangicDege
 
     case NOT_SIL:
       const removed=state.notlar.filter((item)=>item.id!==action.payload)
-      localStorageStateYaz(s10chLocalStorageKey, removed)
-      toast.warn('Removed it')
+      localStorageStateYaz(s10chLocalStorageKey, {notlar:removed})
+      toast.warn('Çıkarıldınız!!')
       return {
         ...state,
         notlar:removed
       }
-
-      case GET_NOTS_FROM_LS:
-      return {...baslangicDegerleri.notlar, notlar:baslangicDegerleriBelirle(s10chLocalStorageKey,baslangicDegerleri)}
 
       default:
       return state
    
   }
 }
-
-
-
 
 
 export default train;
