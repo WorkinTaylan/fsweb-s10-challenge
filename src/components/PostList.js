@@ -1,21 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getNotsFromLocalStorage } from "../actions";
+
 import Post from "./Post";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import {notEkleAPI, notLS} from "../actions"
   
 
 const PostList = () => {
-  const notlar = useSelector((store)=>store.notlar);
-  console.log(notlar)
+  
   const dispatch=useDispatch();
-
-/*useEffect(() => {
-  dispatch(notEkleAPI())
-  dispatch(notLS())
-}, [])*/
-
+  const notlar= useSelector((store) => store.notlar);
+  
+  console.log('notlar burada mı?',notlar)
+  
 
 
   return notlar.length === 0 ? (
@@ -23,7 +19,7 @@ const PostList = () => {
   ) : (
     <div>
       {notlar.map((not) => (
-        <Post item={not} key={not.id} />
+        <Post item={not} key={not.id}/>
       ))}
     </div>
   );

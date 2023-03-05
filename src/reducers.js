@@ -1,7 +1,15 @@
-import { NOT_EKLE, NOT_SIL, GET_NOT_LS} from "./actions";
+import { NOT_EKLE, NOT_SIL, GET_NOTS_FROM_LS} from "./actions";
 import { toast } from "react-toastify";
 
-const s10chLocalStorageKey = "s10ch";
+ const s10chLocalStorageKey = "s10ch";
+
+function localStorageStateYaz(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+function localStorageStateOku(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
 
 const baslangicDegerleri = {
   notlar: [
@@ -13,7 +21,16 @@ const baslangicDegerleri = {
   ],
 };
 
-const train =(state=baslangicDegerleri, action)=>{
+function baslangicDegerleriBelirle(key, initObj) {
+  const eskiNotlar = localStorageStateOku(key);
+
+  if (eskiNotlar) {
+    return eskiNotlar;
+  } else {
+    return initObj
+  }
+}
+const train =(state=baslangicDegerleriBelirle(s10chLocalStorageKey,baslangicDegerleri), action)=>{
   switch(action.type){
     case NOT_EKLE:
       let yeniState=
@@ -22,6 +39,7 @@ const train =(state=baslangicDegerleri, action)=>{
         }
       
       localStorageStateYaz(s10chLocalStorageKey, yeniState)
+      
       toast.success('Harika! Not eklendi.')
     return yeniState;
 
@@ -34,13 +52,9 @@ const train =(state=baslangicDegerleri, action)=>{
         notlar:removed
       }
 
-      case GET_NOT_LS:
-      const updatedNotes = baslangicNotlariniGetir(s10chLocalStorageKey);
-      return {
-        ...state,
-        notlar: updatedNotes,
-      };
-      
+      case GET_NOTS_FROM_LS:
+      return {...baslangicDegerleri.notlar, notlar:baslangicDegerleriBelirle(s10chLocalStorageKey,baslangicDegerleri)}
+
       default:
       return state
    
@@ -49,22 +63,6 @@ const train =(state=baslangicDegerleri, action)=>{
 
 
 
-export function localStorageStateYaz(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
-}
 
-function localStorageStateOku(key) {
-  return JSON.parse(localStorage.getItem(key));
-}
-
-function baslangicNotlariniGetir(key) {
-  const eskiNotlar = localStorage.getItem(key);
-
-  if (eskiNotlar) {
-    return localStorageStateOku(key);
-  } else {
-    return baslangicDegerleri
-  }
-}
 
 export default train;
