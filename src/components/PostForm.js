@@ -22,7 +22,7 @@ export default function PostForm() {
     const yeniNot = {
       id: nanoid(),
       date:Date(),
-      body: Object.values(data)
+      body: Object.values(data) //Objects.values ?
         .filter((v) => v !== "")
         .join("|"),
     };
@@ -34,7 +34,7 @@ export default function PostForm() {
     setTimeout(() => history.push("/notlar"), 2000);
   }
 
-  const inputCx = "border border-zinc-300 h-9 rounded-none text-sm px-2 w-full";
+  const inputCx = "border border-zinc-300 h-9 rounded-none text-m px-2 w-full text-black";
 
   return (
     <div className="flex flex-col sm:flex-row beyazKutu">
@@ -45,15 +45,15 @@ export default function PostForm() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-3 p-8 flex-1"
+        className="flex flex-col gap-3 p-8 flex-1 "
       >
         <h1>Minnettar hissediyorum, çünkü...</h1>
-        <p className="text-xs">
+        <p className="text-xl">
           Minnettar günlüğü notları; her gün teşekkür edilen birkaç şeyi
           listelemekten, minnettar olunan şeylere dair daha uzun ve kapsamlı
           yansıtmalara kadar pek çok şeyden oluşabilir.
         </p>
-        <p className="text-stone-700 my-3 text-xs">
+        <p className="text-stone-700 my-3 text-l text-white">
           Her gün belli saatlerde 3 maddeden oluşan bir liste
           yapmak, bu alışkanlığa iyi bir başlangıç noktası sayılır.
         </p>

@@ -35,7 +35,7 @@ const train =(state=baslangicDegerleriBelirle(s10chLocalStorageKey,baslangicDege
     case NOT_EKLE:
       let yeniState=
         {
-      notlar:[...state.notlar, action.payload]
+      notlar:[action.payload, ...state.notlar]
         }
       
       localStorageStateYaz(s10chLocalStorageKey, yeniState)

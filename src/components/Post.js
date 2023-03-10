@@ -30,7 +30,7 @@ export default function Post({ item }) {
         </p>
       ))}
 
-      <button className="text-xs text-amber-600 mt-4 underline" onClick={handleSil}>
+      <button className="text-xl text-black mt-4 underline hover:text-yellow-200" onClick={handleSil}>
         Bu notu sil
       </button>
     </div>

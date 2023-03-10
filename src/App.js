@@ -39,10 +39,10 @@ export default function App() {
             <div className="beyazKutu">
               <img src={Img} alt="" />
               <div className="px-8 pt-7 pb-6 text-sm">
-                <h1 className="text-3xl text-amber-600">
+                <h1 className="text-3xl text-white font-abc">
                   Minnet Günlüğü Nedir?
                 </h1>
-                <p className="my-2">
+                <p className="my-2 font-abc text-xl text-white">
                   Minnet günlüğü, kişinin hayatındaki olumlu şeylere
                   odaklanması, minnettarlık ve şükran duygusunu hissetmesi için
                   sık sık teşekkür ettiği şeyleri yazdığı bir tür günlüktür.

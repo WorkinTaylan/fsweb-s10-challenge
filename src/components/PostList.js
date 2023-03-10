@@ -14,7 +14,7 @@ const PostList = () => {
   
 
   return notlar.length === 0 ? (
-    <div className="beyazKutu text-center p-6">Hiç notunuz yok</div>
+    <div className="beyazKutu text-center p-6 text-2xl font-abc text-white">Hiç notunuz yok</div>
   ) : (
     <div>
       {notlar.map((not) => (

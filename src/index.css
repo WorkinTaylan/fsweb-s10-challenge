@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -18,18 +18,19 @@ code {
 }
 
 .myButton {
-  @apply px-4 py-2 transition-colors inline-flex gap-2 items-center font-bold bg-amber-700 hover:bg-amber-600 text-white self-end;
+  @apply px-4 py-2 transition-colors inline-flex gap-2 items-center font-bold bg-yellow-400 hover:bg-yellow-500 text-white self-end;
 }
 
 .beyazKutu {
-  @apply bg-white shadow-md w-full;
+  @apply bg-orange-500 shadow-md w-full font-abc text-white;
 }
 
 h1 {
   font-family: "Alex Brush", cursive;
-  @apply text-3xl text-amber-600;
+  @apply text-3xl text-white font-abc text-white;
 }
 
 nav {
   font-weight: 500;
+  @apply text-2xl text-amber-600 font-abc;
 }
